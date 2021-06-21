@@ -7,7 +7,8 @@ WORKDIR /tmp
 
 COPY pyproject.toml ./
 
-RUN poetry config virtualenvs.create false \
+RUN pip3 install -U pip wheel \
+  && poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
 RUN jupyter contrib nbextension install --user
