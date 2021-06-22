@@ -12,7 +12,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 COPY pyproject.toml ./
 
-RUN export LLVM_CONFIG=/usr/bin/llvm-config-10 && poetry install -v
+RUN export LLVM_CONFIG=/usr/bin/llvm-config-10 && python3.8 -m pip install -U wheel && poetry install -v
 
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
