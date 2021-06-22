@@ -7,7 +7,7 @@ WORKDIR /tmp
 
 COPY pyproject.toml ./
 
-RUN apt-get update && apt-get install llvm-10 llvm-10-dev
+RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev
 
 RUN pip3 install -U pip wheel && pip3 install llvmlite \
   && poetry config virtualenvs.create false \
