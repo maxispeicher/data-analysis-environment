@@ -9,7 +9,7 @@ COPY pyproject.toml ./
 
 RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev
 
-RUN pip3 install -U pip wheel && pip3 install llvmlite PyYaml==5.4.1 \
+RUN pip3 install -U pip wheel && pip3 install llvmlite PyYAML==5.4.1 \
   && poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
