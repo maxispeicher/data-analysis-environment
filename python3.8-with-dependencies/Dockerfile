@@ -9,9 +9,7 @@ COPY pyproject.toml ./
 
 RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev
 
-RUN poetry config virtualenvs.create false \
-  && poetry export -f requirements.txt --output requirements.txt --without-hashes \
-  && pip3 install --ignore-installed -r requirements.txt
+RUN python3 -m venv .venv && source .venv/bin/activate && poetry install -v
 
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
