@@ -7,9 +7,9 @@ WORKDIR /tmp
 
 COPY pyproject.toml ./
 
-RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev
+RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev python3.8-venv
 
-RUN python3 -m venv .venv && source .venv/bin/activate && poetry install -v
+RUN python3.8 -m venv .venv && source .venv/bin/activate && poetry install -v
 
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
