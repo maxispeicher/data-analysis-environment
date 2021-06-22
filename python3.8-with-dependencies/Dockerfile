@@ -9,9 +9,10 @@ COPY pyproject.toml ./
 
 RUN apt-get update && apt-get install -y --no-install-recommends llvm-10 llvm-10-dev
 
-RUN pip3 install -U pip wheel && pip3 install llvmlite && pip3 install --ignore-installed PyYAML==5.4.1 \
+RUN pip3 install -U pip wheel \
   && poetry config virtualenvs.create false \
-  && poetry install --no-interaction --no-ansi
+  && poetry export -f requirements.txt --output requirements.txt \
+  && pip3 install --ignore-installed -r requirements.txt
 
 RUN jupyter contrib nbextension install --user
 RUN jupyter nbextensions_configurator enable --user
