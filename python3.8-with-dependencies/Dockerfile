@@ -7,9 +7,9 @@ WORKDIR /tmp
 
 COPY pyproject.toml ./
 
-RUN apt-get update && apt-get install python3-setuptools
+RUN apt-get update && apt-get install llvm-10 llvm-10-dev
 
-RUN pip3 install -U pip wheel && easy_install3 llvmlite \
+RUN pip3 install -U pip wheel && pip3 install llvmlite \
   && poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
